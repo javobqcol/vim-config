@@ -26,8 +26,6 @@ set undoreload=10000         " Guardar todo el buffer al recargar un archivo
 nnoremap <F2> :NERDTreeToggle<CR>
 
 " ----- FZF: Agregar ambos plugins a la ruta -----
-set rtp+=~/.vim/pack/misplugins/start/fzf
-set rtp+=~/.vim/pack/misplugins/start/fzf.vim
 
 " ----- Atajos de teclado para fzf.vim -----
 nnoremap <silent> <C-p> :Files<CR>
