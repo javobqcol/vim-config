@@ -1,0 +1,12 @@
+emmet-vim
+fzf
+fzf.vim
+gruvbox
+nerdtree
+vim-airline
+vim-airline-themes
+vim-colors-solarized
+vim-commentary
+vim-fugitive
+vim-surround
+vim-vinegar
