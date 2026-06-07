@@ -1,71 +1,76 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
-echo "==> Instalando Vim desde vim-config..."
+PLUGIN_DIR="$HOME/.vim/pack/vendor/start"
+VIMRC_SRC="$(pwd)/.vimrc"
+VIMRC_DEST="$HOME/.vimrc"
+BACKUP_DIR="$HOME/.vim_backup"
 
-VIM_PACK="$HOME/.vim/pack/vendor/start"
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+MODE="${1:-safe}"   # safe | force
 
-mkdir -p "$VIM_PACK"
+echo "======================================="
+echo "  Vim Config Installer (PRO MODE)"
+echo "  Mode: $MODE"
+echo "======================================="
 
-install_plugin () {
-  NAME=$1
-  REPO=$2
+# ----------------------------
+# 1. BACKUP VIMRC
+# ----------------------------
+mkdir -p "$BACKUP_DIR"
 
-  if [ -d "$VIM_PACK/$NAME" ]; then
-    echo "✔ $NAME ya existe"
-  else
-    echo "⬇ Instalando $NAME"
-    git clone --depth=1 "$REPO" "$VIM_PACK/$NAME"
-  fi
+if [ -f "$VIMRC_DEST" ]; then
+    echo "[*] Detectado .vimrc existente"
+
+    if [ "$MODE" = "force" ]; then
+        echo "[!] FORCE mode: creando backup y sobrescribiendo"
+
+        cp "$VIMRC_DEST" "$BACKUP_DIR/vimrc.$(date +%Y%m%d_%H%M%S)"
+        cp -f "$VIMRC_SRC" "$VIMRC_DEST"
+
+    else
+        echo "[SAFE] No se sobrescribe .vimrc"
+        echo "      Usa: install.sh force para reemplazar"
+    fi
+else
+    echo "[+] No existe .vimrc, instalando..."
+    cp "$VIMRC_SRC" "$VIMRC_DEST"
+fi
+
+# ----------------------------
+# 2. PLUGINS
+# ----------------------------
+mkdir -p "$PLUGIN_DIR"
+
+install_plugin() {
+    local name="$1"
+    local repo="$2"
+
+    if [ -d "$PLUGIN_DIR/$name/.git" ]; then
+        echo "[OK] $name ya instalado"
+    else
+        echo "[+] Instalando $name..."
+        git clone --depth=1 "$repo" "$PLUGIN_DIR/$name"
+    fi
 }
 
-echo "==> Leyendo plugins.txt..."
+echo ""
+echo "==> Instalando plugins..."
 
-while read -r plugin; do
-  case "$plugin" in
-    fzf)
-      install_plugin fzf https://github.com/junegunn/fzf.git
-      ;;
-    fzf.vim)
-      install_plugin fzf.vim https://github.com/junegunn/fzf.vim.git
-      ;;
-    nerdtree)
-      install_plugin nerdtree https://github.com/preservim/nerdtree.git
-      ;;
-    vim-airline)
-      install_plugin vim-airline https://github.com/vim-airline/vim-airline.git
-      ;;
-    vim-airline-themes)
-      install_plugin vim-airline-themes https://github.com/vim-airline/vim-airline-themes.git
-      ;;
-    vim-surround)
-      install_plugin vim-surround https://github.com/tpope/vim-surround.git
-      ;;
-    vim-commentary)
-      install_plugin vim-commentary https://github.com/tpope/vim-commentary.git
-      ;;
-    vim-fugitive)
-      install_plugin vim-fugitive https://github.com/tpope/vim-fugitive.git
-      ;;
-    vim-vinegar)
-      install_plugin vim-vinegar https://github.com/tpope/vim-vinegar.git
-      ;;
-    gruvbox)
-      install_plugin gruvbox https://github.com/morhetz/gruvbox.git
-      ;;
-    vim-colors-solarized)
-      install_plugin vim-colors-solarized https://github.com/altercation/vim-colors-solarized.git
-      ;;
-    emmet-vim)
-      install_plugin emmet-vim https://github.com/mattn/emmet-vim.git
-      ;;
-    *)
-      echo "⚠ plugin desconocido: $plugin"
-      ;;
-  esac
-done < "$REPO_DIR/plugins.txt"
+install_plugin fzf https://github.com/junegunn/fzf.git
+install_plugin fzf.vim https://github.com/junegunn/fzf.vim.git
+install_plugin nerdtree https://github.com/preservim/nerdtree.git
+install_plugin vim-airline https://github.com/vim-airline/vim-airline.git
+install_plugin vim-airline-themes https://github.com/vim-airline/vim-airline-themes.git
+install_plugin vim-vinegar https://github.com/tpope/vim-vinegar.git
+install_plugin gruvbox https://github.com/morhetz/gruvbox.git
+install_plugin vim-colors-solarized https://github.com/altercation/vim-colors-solarized.git
+install_plugin vim-surround https://github.com/tpope/vim-surround.git
+install_plugin vim-commentary https://github.com/tpope/vim-commentary.git
+install_plugin vim-fugitive https://github.com/tpope/vim-fugitive.git
+install_plugin emmet-vim https://github.com/mattn/emmet-vim.git
 
 echo ""
-echo "✔ Vim listo."
+echo "======================================="
+echo "  Instalación completa"
+echo "======================================="
