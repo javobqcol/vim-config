@@ -7,38 +7,29 @@ VIMRC_SRC="$(pwd)/.vimrc"
 VIMRC_DEST="$HOME/.vimrc"
 BACKUP_DIR="$HOME/.vim_backup"
 
-MODE="${1:-safe}"   # safe | force
-
 echo "======================================="
-echo "  Vim Config Installer (PRO MODE)"
-echo "  Mode: $MODE"
+echo "  VIM INSTALLER (FORCE MODE)"
 echo "======================================="
 
 # ----------------------------
-# 1. BACKUP VIMRC
+# BACKUP + OVERWRITE VIMRC
 # ----------------------------
 mkdir -p "$BACKUP_DIR"
 
 if [ -f "$VIMRC_DEST" ]; then
-    echo "[*] Detectado .vimrc existente"
-
-    if [ "$MODE" = "force" ]; then
-        echo "[!] FORCE mode: creando backup y sobrescribiendo"
-
-        cp "$VIMRC_DEST" "$BACKUP_DIR/vimrc.$(date +%Y%m%d_%H%M%S)"
-        cp -f "$VIMRC_SRC" "$VIMRC_DEST"
-
-    else
-        echo "[SAFE] No se sobrescribe .vimrc"
-        echo "      Usa: install.sh force para reemplazar"
-    fi
-else
-    echo "[+] No existe .vimrc, instalando..."
-    cp "$VIMRC_SRC" "$VIMRC_DEST"
+    echo "[*] Backup de .vimrc existente"
+    cp "$VIMRC_DEST" "$BACKUP_DIR/vimrc.$(date +%Y%m%d_%H%M%S)"
 fi
 
+echo "[+] Copiando nuevo .vimrc"
+cp -f "$VIMRC_SRC" "$VIMRC_DEST"
+
+# VERIFICACIÓN (esto es clave)
+echo "[✓] .vimrc instalado desde repo:"
+tail -n 5 "$VIMRC_DEST"
+
 # ----------------------------
-# 2. PLUGINS
+# PLUGINS
 # ----------------------------
 mkdir -p "$PLUGIN_DIR"
 
@@ -46,8 +37,8 @@ install_plugin() {
     local name="$1"
     local repo="$2"
 
-    if [ -d "$PLUGIN_DIR/$name/.git" ]; then
-        echo "[OK] $name ya instalado"
+    if [ -d "$PLUGIN_DIR/$name" ]; then
+        echo "[OK] $name ya existe"
     else
         echo "[+] Instalando $name..."
         git clone --depth=1 "$repo" "$PLUGIN_DIR/$name"
@@ -72,5 +63,5 @@ install_plugin emmet-vim https://github.com/mattn/emmet-vim.git
 
 echo ""
 echo "======================================="
-echo "  Instalación completa"
+echo " INSTALACIÓN COMPLETA"
 echo "======================================="
