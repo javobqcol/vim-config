@@ -61,7 +61,49 @@ install_plugin vim-commentary https://github.com/tpope/vim-commentary.git
 install_plugin vim-fugitive https://github.com/tpope/vim-fugitive.git
 install_plugin emmet-vim https://github.com/mattn/emmet-vim.git
 
+
+
 echo ""
 echo "======================================="
 echo " INSTALACIÓN COMPLETA"
 echo "======================================="
+echo ""
+
+echo "✔ Vim listo."
+echo
+echo "======================================="
+echo " RESUMEN DE PLUGINS INSTALADOS"
+echo "======================================="
+echo
+echo "F2                -> NERDTree (mostrar/ocultar explorador)"
+echo "Ctrl+P            -> FZF Files (buscar archivos)"
+echo "Ctrl+F            -> FZF Ripgrep (buscar texto)"
+echo "Ctrl+B            -> FZF Buffers"
+echo "Ctrl+L            -> FZF Lines"
+echo
+echo "vim-surround"
+echo "  ysiw<p>         -> rodea palabra con <p></p>"
+echo "  yss<div>        -> rodea línea completa"
+echo "  cs\"'            -> cambia \" por '"
+echo "  ds\"             -> elimina comillas"
+echo
+echo "emmet-vim"
+echo "  div>ul>li*5"
+echo "  Ctrl+Y ,        -> expandir abreviatura"
+echo "  Visual + Ctrl+Y ,"
+echo "                   -> envolver selección"
+echo
+echo "vim-commentary"
+echo "  gcc             -> comentar línea"
+echo "  gc + selección  -> comentar bloque"
+echo
+echo "vim-fugitive"
+echo "  :Git status"
+echo "  :Git blame"
+echo "  :Git commit"
+echo
+echo "vim-airline"
+echo "  Barra de estado mejorada"
+echo
+echo "======================================="
+echo
