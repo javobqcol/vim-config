@@ -16,4 +16,4 @@ Una configuración de **Vim** minimalista, eficiente y directa al grano, optimiz
 Puedes aplicar esta configuración instantáneamente en cualquier máquina ejecutando la siguiente línea en tu terminal:
 
 ```bash
-curl -sLf [https://raw.githubusercontent.com/javobqcol/vim-config/main/.vimrc](https://raw.githubusercontent.com/javobqcol/vim-config/main/.vimrc) -o ~/.vimrc
+curl -sLf "https://raw.githubusercontent.com/javobqcol/vim-config/main/.vimrc" -o ~/.vimrc
