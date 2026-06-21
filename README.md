@@ -10,6 +10,44 @@ Una configuración de **Vim** minimalista, eficiente y directa al grano, optimiz
 * **Estética limpia:** Interfaz despejada enfocada 100% en el código fuente.
 
 ---
+=======================================
+## RESUMEN DE PLUGINS INSTALADOS
+=======================================
+
+F2                -> NERDTree (mostrar/ocultar explorador)
+Ctrl+P            -> FZF Files (buscar archivos)
+Ctrl+F            -> FZF Ripgrep (buscar texto)
+Ctrl+B            -> FZF Buffers
+Ctrl+L            -> FZF Lines
+
+vim-surround
+  ysiw<p>         -> rodea palabra con <p></p>
+  yss<div>        -> rodea línea completa
+  cs"'            -> cambia " por '
+  ds"             -> elimina comillas
+
+emmet-vim
+  div>ul>li*5
+  Ctrl+Y ,        -> expandir abreviatura
+  Visual + Ctrl+Y ,
+                   -> envolver selección
+
+vim-commentary
+  gcc             -> comentar línea
+  gc + selección  -> comentar bloque
+
+vim-fugitive
+  :Git status
+  :Git blame
+  :Git commit
+
+vim-airline
+  Barra de estado mejorada
+
+=======================================
+
+
+
 
 ## 💾 Instalación Rápida con `curl`
 
