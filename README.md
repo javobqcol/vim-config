@@ -14,17 +14,17 @@ Una configuración de **Vim** minimalista, eficiente y directa al grano, optimiz
 ## RESUMEN DE PLUGINS INSTALADOS
 =======================================
 
-F2                -> NERDTree (mostrar/ocultar explorador)
-Ctrl+P            -> FZF Files (buscar archivos)
-Ctrl+F            -> FZF Ripgrep (buscar texto)
-Ctrl+B            -> FZF Buffers
-Ctrl+L            -> FZF Lines
+* **F2**                -> NERDTree (mostrar/ocultar explorador)
+* **Ctrl+P**            -> FZF Files (buscar archivos)
+* **Ctrl+F**            -> FZF Ripgrep (buscar texto)
+* **Ctrl+B**            -> FZF Buffers
+* **Ctrl+L**            -> FZF Lines
 
 vim-surround
-  ysiw<p>         -> rodea palabra con <p></p>
-  yss<div>        -> rodea línea completa
-  cs"'            -> cambia " por '
-  ds"             -> elimina comillas
+* **ysiw<p>**         -> rodea palabra con <p></p>
+* **yss<div>**        -> rodea línea completa
+* **cs"'**            -> cambia " por '
+* **ds"**             -> elimina comillas
 
 emmet-vim
   div>ul>li*5
