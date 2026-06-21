@@ -1,6 +1,6 @@
 # Minimalist Vim Configuration
 
-Una configuración de **Vim** minimalista, eficiente y directa al grano, optimizada para el desarrollo ágil desde la terminal sin sobrecargar el editor. Recopila las 4 directivas más útiles para transformar la experiencia nativa de edición.
+Una configuración de **Vim** minimalista, eficiente y directa al grano, optimizada para el desarrollo ágil desde la terminal sin sobrecargar el editor. Recopila las directivas y plugins más útiles para transformar la experiencia nativa de edición.
 
 ## 🚀 Características Principales
 
@@ -10,49 +10,53 @@ Una configuración de **Vim** minimalista, eficiente y directa al grano, optimiz
 * **Estética limpia:** Interfaz despejada enfocada 100% en el código fuente.
 
 ---
-=======================================
-## RESUMEN DE PLUGINS INSTALADOS
-=======================================
 
-* **F2**                -> NERDTree (mostrar/ocultar explorador)
-* **Ctrl+P**            -> FZF Files (buscar archivos)
-* **Ctrl+F**            -> FZF Ripgrep (buscar texto)
-* **Ctrl+B**            -> FZF Buffers
-* **Ctrl+L**            -> FZF Lines
+## 🛠️ Plugins Instalados y Atajos
 
-vim-surround
-* **ysiw<p>**         -> rodea palabra con <p></p>
-* **yss<div>**        -> rodea línea completa
-* **cs"'**            -> cambia " por '
-* **ds"**             -> elimina comillas
+### 🔍 Navegación y Búsqueda (FZF & NERDTree)
 
-emmet-vim
-  div>ul>li*5
-  Ctrl+Y ,        -> expandir abreviatura
-  Visual + Ctrl+Y ,
-                   -> envolver selección
+| Atajo | Acción |
+| :--- | :--- |
+| <kbd>F2</kbd> | Mostrar/ocultar explorador de archivos (**NERDTree**) |
+| <kbd>Ctrl + P</kbd> | Buscar archivos (**FZF Files**) |
+| <kbd>Ctrl + F</kbd> | Buscar texto dentro de los archivos (**FZF Ripgrep**) |
+| <kbd>Ctrl + B</kbd> | Listar y buscar en buffers abiertos (**FZF Buffers**) |
+| <kbd>Ctrl + L</kbd> | Buscar líneas en el archivo actual (**FZF Lines**) |
 
-vim-commentary
-  gcc             -> comentar línea
-  gc + selección  -> comentar bloque
+### ✍️ Edición y Estructura (`vim-surround` & `emmet-vim`)
 
-vim-fugitive
-  :Git status
-  :Git blame
-  :Git commit
+**`vim-surround` (Manipulación de entornos)**
+* <kbd>ysiw&lt;p&gt;</kbd> → Rodea la palabra actual con `<p></p>`.
+* <kbd>yss&lt;div&gt;</kbd> → Rodea la línea completa con `<div></div>`.
+* <kbd>cs"'</kbd> → Cambia comillas dobles `"` por simples `'`.
+* <kbd>ds"</kbd> → Elimina las comillas `"`.
 
-vim-airline
-  Barra de estado mejorada
+**`emmet-vim` (Expansión de HTML/CSS)**
+* Escribe una abreviatura (ej. `div>ul>li*5`) y presiona <kbd>Ctrl + Y</kbd> , para expandirla.
+* En **Modo Visual**, presiona <kbd>Ctrl + Y</kbd> , para envolver la selección en una etiqueta.
 
-=======================================
+### 📝 Comentarios (`vim-commentary`)
 
+* <kbd>gcc</kbd> → Comentar o descomentar la línea actual.
+* <kbd>gc</kbd> (en Modo Visual) → Comentar o descomentar el bloque seleccionado.
 
+### 🐙 Integración con Git (`vim-fugitive`)
 
+Usa los comandos nativos de Git directamente desde Vim:
+* `:Git status` → Ver el estado del repositorio.
+* `:Git blame` → Ver quién modificó cada línea.
+* `:Git commit` → Crear un nuevo commit.
 
-## 💾 Instalación Rápida con `curl`
+### 📊 Interfaz (`vim-airline`)
+
+* **Barra de estado mejorada:** Visualiza de forma limpia el modo actual, la rama de Git, el formato de archivo y la posición del cursor.
+
+---
+
+## 💾 Instalación Rápida
 
 Puedes aplicar esta configuración instantáneamente en cualquier máquina ejecutando la siguiente línea en tu terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/javobqcol/vim-config/main/bootstrap.sh | bash
+curl -fsSL [https://raw.githubusercontent.com/javobqcol/vim-config/main/bootstrap.sh](https://raw.githubusercontent.com/javobqcol/vim-config/main/bootstrap.sh) | bash
 
